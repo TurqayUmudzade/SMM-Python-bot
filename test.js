@@ -1,0 +1,1 @@
+var chat = document.getElementsByClassName('frMpI  -sxBV')

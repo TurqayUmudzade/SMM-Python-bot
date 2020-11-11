@@ -19,6 +19,13 @@ def goToDirect():
 
     browser.find_element_by_css_selector("nav svg[aria-label='Direct']").click()
 
+def readChat():
+    browser.implicitly_wait(2)
+    #browser.execute_script("var chat = document.getElementsByClassName('frMpI  -sxBV');chat.scrollBy(0,250)")
+    content = browser.find_elements_by_xpath("//div[@class='   CMoMH    _8_yLp  ']//span")
+    for c in content:
+        print(c.text)
+
 
 browser = webdriver.Chrome()
 browser.implicitly_wait(5)
@@ -29,31 +36,13 @@ login(os.getenv("instaname"),os.getenv("password"))
 goToDirect()
 browser.implicitly_wait(2)
 
-dms=browser.find_element_by_xpath("//div[@class='        DPiy6            Igw0E     IwRSH      eGOV_         _4EzTm                                                                                                              ']")
-dms.click()
+dms=browser.find_elements_by_xpath("//div[@class='        DPiy6            Igw0E     IwRSH      eGOV_         _4EzTm                                                                                                              ']")
+for x in range(40):
+   try:
+        dms=browser.find_elements_by_xpath("//div[@class='        DPiy6            Igw0E     IwRSH      eGOV_         _4EzTm                                                                                                              ']")
+        dms[x].click()
+        readChat()
+        print("-------")
+   except IndexError:
+       break
 
-content = browser.find_elements_by_xpath("//div[@class='   CMoMH    _8_yLp  ']//span")
-for c in content:
-    print(c.text)
-
-
-
-
-
-
-
-
-
-# for dm in dms:
-#     browser.implicitly_wait(1)
-#     dm.click()
-
-# content = browser.find_element_by_xpath("//div[@class='   CMoMH    _8_yLp  ']//span")
-# print(content)
-# for c in content:
-#     print(c.text)
-
-
-# sleep(5)
-
-# browser.close()
