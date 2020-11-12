@@ -3,3 +3,5 @@ test.py
 *.log
 test.js
 *.txt
+*.csv
+/Test
